@@ -1,3 +1,15 @@
+/*
+
+Susun algoritma dan program atau penggalan progran untuk menginput 3
+buah bilangan yang masing-masing menyatakan panjang sebuah garis.
+Kemudian periksa ketiga buah garis tersebut apakah dapat membentuk
+sebuah segitiga atau tidak. Bila ketiga buah garis tersebut dapat
+membentuk sebuah segitiga, maka cetak perkataan “SEGI TIGA”,
+sebaliknya bila ketiga garis tersebut tidak mungkin membentuk sebuah
+segitiga, makacetak perkataan: “BUKAN SEGITIGA”
+
+*/
+
 #include <iostream>
 #include <stdio.h>
 using namespace std;
