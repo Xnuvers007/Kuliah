@@ -1,3 +1,8 @@
+/*
+Indra Dwi A
+https://github.com/Xnuvers007/
+*/
+
 #include<iostream>
 using namespace std;
 
