@@ -20,7 +20,8 @@ using namespace std;
 int main()
 {
     int harga, diskon, total, i;
-    char nama[300], ulang;
+    char ulang;
+    string nama;
 
     // signal (SIGINT, sigint_Handler); // kode untuk ctrl + c tidak dapat digunakan
     
@@ -29,7 +30,8 @@ int main()
 
     cout<<"Masukan nama Anda : ";
     // cin.getline(nama,sizeof(nama));
-    cin>>nama;
+    // cin>>nama;
+    getline(cin>>nama, nama);
 
     cout<<"|================================|"<<endl;
     cout<<" Loket Pembelian\n";
