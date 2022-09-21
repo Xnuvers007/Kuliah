@@ -83,7 +83,7 @@ int main()
         case 6:
             cout<<" Terima Kasih Atas Kunjungan Anda \n";
             Sleep(3);
-            system("exit");
+            exit(0);
             break;
         default:
             cout<<" Anda tidak mendapatkan apapun \n";
