@@ -10,18 +10,6 @@
 // Pi = 3,14
 // r = jari-jari bola
 
-// TUGAS AKHIR
-// 1. Buatlah algoritma dan program untuk menghitung volume dan luas permukaan 
-// bola apabila masukkannya berupa jari-jari. Jari-jari yang dimasukkan bertipe float 
-// dan output atau keluaran yang dihasilkan adalah luas dan volume permukaan bola 
-// dengan tipenya adalah float.
-// Petunjuk:
-// Volume = 4/3 x pi x r3
-// Luas = 4 x pi x r2
-// Dengan:
-// Pi = 3,14
-// r = jari-jari bola
-
 // ADA 2 CARA, untuk cara ke 2, hapus saja include <math.h> :
 
 #include <iostream>
