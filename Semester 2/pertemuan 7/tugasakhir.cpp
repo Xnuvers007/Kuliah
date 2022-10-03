@@ -7,7 +7,7 @@ int main()
 {
     int a=0, b=0, batas;
     cout<<"======================================="<<endl;
-    cout<<"Code By Indra Dwi Aryadi (211011450468)"<<endl;
+    cout<<"Code By Indra Dwi Aryadi (xxxxxxxxxxxx)"<<endl;
     cout<<"======================================="<<endl;
     cout<<"Masukan Batas : ";
     cin>>batas;
