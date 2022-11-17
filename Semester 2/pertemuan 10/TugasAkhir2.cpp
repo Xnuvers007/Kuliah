@@ -1,26 +1,28 @@
-//1. Buatlah program untuk menghitung banyaknya karakter yang dimasukkan dengan menggunakan pointer!
+// 1. Buatlah program untuk menghitung banyaknya karakter yang dimasukkan dengan menggunakan pointer!
 #include <iostream>
 
 using namespace std;
 
-int main ()
+int main()
 {
     char *p;
     char x[100];
     p = x;
-    int i = 0;
+    int i = 0, j;
     cout << "Masukan karakter : ";
-    // cin >> x;
     cin.getline(x, 100);
-    
-    while (*p != '\0')
+
+    for (j = 0; j < 100; j++)
     {
+        if (x[j] == '\0')
+        {
+            break;
+        }
         i++;
-        p++;
     }
     cout << "Banyaknya karakter : " << i << endl;
     cout << "Alamat : " << &p << endl;
     cout << "Alamat Untuk Banyaknya Karakter : " << &i << endl;
-    
+
     return 0;
 }
