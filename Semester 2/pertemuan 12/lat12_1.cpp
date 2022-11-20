@@ -17,13 +17,16 @@ int main()
     for (int i=0; i<7; i++)
     for (int ii=0; ii<7; ii++)
     if ( NumList[ii] > NumList [ii +1] )
- { 
- Swap = NumList [ii];
- NumList [ ii ] = NumList[ ii +1 ];
- NumList [ ii + 1] = Swap;
- }
- cout<<"Data setelah diurutkan : \n";
- for (int iii=0; iii<8; iii++)
- cout<< setw (3) << NumList [iii];
- cout<<endl <<endl;
+    {
+        Swap = NumList [ii];
+        NumList [ ii ] = NumList[ ii +1 ];
+        NumList [ ii + 1] = Swap;
+    }
+    
+    cout<<"Data setelah diurutkan : \n";
+    for (int iii=0; iii<8; iii++)
+    {
+        cout<< setw (3) << NumList [iii];
+    }
+    cout<<endl <<endl;
 }
