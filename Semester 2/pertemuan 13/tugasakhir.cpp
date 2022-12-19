@@ -3,6 +3,7 @@
 // dan dimasukkan dalam array!
 
 #include <iostream>
+#pragma GCC optimize ("O3") 
 using namespace std;
 
 int main()
