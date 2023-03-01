@@ -1,4 +1,3 @@
-// Membuat program struct sederhana simple
 #include <iostream>
 #include <string>
 
@@ -14,7 +13,7 @@ struct databarang
 
 int main()
 {
-    databarang barang[3];
+    databarang *barang = new databarang[3]; // alokasi memori dengan operator new
     int i;
     for (i=0; i<3; i++)
     {
@@ -31,5 +30,6 @@ int main()
     {
         cout << barang[i].namabarang << "\t\t" << barang[i].jumlah << "\t" << barang[i].harga << "\t" << barang[i].total << endl;
     }
+    delete[] barang; // membebaskan memori yang dialokasikan
     return 0;
 }
