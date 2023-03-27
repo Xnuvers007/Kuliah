@@ -10,7 +10,7 @@ int binarySearch(int arr[], int l, int r, int x) {
       cout << "Nilai Awal: " << l << ", nilai: " << arr[l] << endl;
       cout << "Nilai Akhir: " << r << ", nilai: " << arr[r] << endl<<endl;
       cout << "Mencari Nilai Tengah: ";
-      cout << l << " + (" << r << " - " << l << ") / 2 = " << mid << endl << endl;
+      cout << "(" << r << " + " << l << ") / 2 = " << mid << endl << endl;
       cout << "Jika Nilai Tengah lebih kecil dari " << x << " maka nilai awal menjadi " << mid << " + 1 = " << mid + 1 << endl;
       cout << "Jika Nilai Tengah lebih besar dari " << x << " maka nilai akhir menjadi " << mid << " - 1 = " << mid - 1 << endl;
       cout << "Jika Nilai Tengah sama dengan " << x << " maka nilai tengah adalah " << mid << endl << endl;
@@ -39,7 +39,7 @@ int main() {
     system("cls");
     
 //    int arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
-    int arr[] = {20, 31, 40, 45, 60, 70, 80, 90, 95};
+    int arr[] = {2,5,8,12,15,25,37,57};
    // total semua array adalah 10
    cout << "Banyak Data: " << sizeof(arr)/sizeof(arr[0]) << endl;
    cout << "Data Dimula Dari indeks 0 sampai " << sizeof(arr)/sizeof(arr[0]) - 1 << endl << endl;
