@@ -1,3 +1,50 @@
+// Tanpa fitur "lihat"
+// #include <iostream>
+// using namespace std;
+
+// const int stackSize = 10; // Ukuran stack
+// int stack[stackSize]; // Array stack
+// int top = -1; // Indeks elemen teratas pada stack
+
+// // Fungsi untuk menambahkan elemen ke dalam stack (push)
+// void push(int data) {
+//     if (top == stackSize - 1) {
+//         cout << "STACK SUDAH PENUH" << endl;
+//     } else {
+//         top++;
+//         stack[top] = data;
+//     }
+// }
+
+// // Fungsi untuk mengambil elemen dari stack (pop)
+// void pop() {
+//     if (top == -1) {
+//         cout << "STACK SUDAH KOSONG" << endl;
+//     } else {
+//         cout << "Data yang diambil: " << stack[top] << endl;
+//         top--;
+//     }
+// }
+
+// int main() {
+//     int data;
+    
+//     while (true) {
+//         cout << "Masukkan data: ";
+//         cin >> data;
+        
+//         if (data % 1000 == 468) {
+//             break;
+//         } else if (data >= 100) {
+//             push(data);
+//         } else {
+//             pop();
+//         }
+//     }
+    
+//     return 0;
+// }
+
 #include <iostream>
 using namespace std;
 
