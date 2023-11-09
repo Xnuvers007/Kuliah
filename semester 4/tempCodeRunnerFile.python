@@ -1,0 +1,34 @@
+# number = "2,1,1,0,1,1,4,5,0,4,6,8"
+
+# sorted_number = sorted(number.split(","))
+
+# print(sorted_number)
+# number = "2,1,1,0,1,1,4,5,0,4,6,8"
+
+# sorted_number = sorted(number.split(","))
+
+# output = "".join(sorted_number)
+
+# print(output)
+
+# Masukan data
+import re
+
+# Masukan data
+nama = "Indra Dwi Aryadi"
+nim = "211011450468"
+
+# Mengurutkan data berdasarkan NIM
+nim_ascending = re.sub(r'\s+', '', nim)
+nim_descending = nim_ascending[::-1]
+
+# Mengurutkan data berdasarkan nama
+nama_ascending = ''.join(sorted(nama.split(), key=lambda x: x[0]))
+nama_descending = ''.join(reversed(nama.split()))
+
+# Menampilkan data
+print("Data Awal: Nama:", nama, ", NIM:", nim)
+print("Urutan berdasarkan NIM (Ascending): NIM:", nim_ascending)
+print("Urutan berdasarkan NIM (Descending): NIM:", nim_descending)
+print("Urutan berdasarkan Nama (Ascending): Nama:", nama_ascending)
+print("Urutan berdasarkan Nama (Descending): Nama:", nama_descending)
