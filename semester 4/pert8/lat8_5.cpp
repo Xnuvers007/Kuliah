@@ -105,61 +105,94 @@ int main()
     int choice;
     char ulangi;
 
-    do {
-
-    cout << endl;
-
-    cout << "|=============================|" << endl;
-    cout << "| Nama  :   Indra Dwi Aryadi  |" << endl;
-    cout << "| NIM   :   211011450468      |" << endl;
-    cout << "|=============================|" << endl;
-    
-    cout << endl;
-
-    cout << "Pilih program pengurutan yang ingin dijalankan:" << endl;
-    cout << "1. Pengurutan Maximum Sort Menaik" << endl;
-    cout << "2. Pengurutan Maximum Sort Menurun" << endl;
-    cout << "3. Pengurutan Minimum Sort Menaik" << endl;
-    cout << "4. Pengurutan Minimum Sort Menurun" << endl;
-    cout << "Masukkan nomor program (1-4): ";
-    cin >> choice;
-
-    int Nilai[20];
-    int N;
-
-    cout << "Masukkan Banyak Bilangan: ";
-    cin >> N;
-
-    for (int i = 0; i < N; i++)
+    do
     {
-        cout << "Elemen ke-" << i << " : ";
-        cin >> Nilai[i];
-    }
 
-    if (choice == 1)
-    {
-        MaximumSortAscending(Nilai, N);
-    }
-    else if (choice == 2)
-    {
-        MaximumSortDescending(Nilai, N);
-    }
-    else if (choice == 3)
-    {
-        MinimumSortAscending(Nilai, N);
-    }
-    else if (choice == 4)
-    {
-        MinimumSortDescending(Nilai, N);
-    }
-    else
-    {
-        cout << "Pilihan tidak valid. Masukkan nomor program (1-4) yang sesuai." << endl;
-    }
+        cout << endl;
 
-    cout << "\nApakah Anda ingin mengulanginya lagi? (y/n): ";
-    cin >> ulangi;
-    system("cls");
+        cout << "|=============================|" << endl;
+        cout << "| Nama  :   Indra Dwi Aryadi  |" << endl;
+        cout << "| NIM   :   211011450468      |" << endl;
+        cout << "|=============================|" << endl;
+
+        cout << endl;
+
+        cout << "Pilih program pengurutan yang ingin dijalankan:" << endl;
+        cout << "1. Pengurutan Maximum Sort Menaik" << endl;
+        cout << "2. Pengurutan Maximum Sort Menurun" << endl;
+        cout << "3. Pengurutan Minimum Sort Menaik" << endl;
+        cout << "4. Pengurutan Minimum Sort Menurun" << endl;
+        cout << "Masukkan nomor program (1-4): ";
+        cin >> choice;
+
+        int Nilai[20];
+        int N;
+
+        // cout << "Masukkan Banyak Bilangan: ";
+        // cin >> N;
+
+        // for (int i = 0; i < N; i++)
+        // {
+        //     cout << "Elemen ke-" << i << " : ";
+        //     cin >> Nilai[i];
+        // }
+
+        if (choice == 1)
+        {
+            cout << "Masukkan Banyak Bilangan: ";
+            cin >> N;
+
+            for (int i = 0; i < N; i++)
+            {
+                cout << "Elemen ke-" << i << " : ";
+                cin >> Nilai[i];
+            }
+            MaximumSortAscending(Nilai, N);
+        }
+        else if (choice == 2)
+        {
+            cout << "Masukkan Banyak Bilangan: ";
+            cin >> N;
+
+            for (int i = 0; i < N; i++)
+            {
+                cout << "Elemen ke-" << i << " : ";
+                cin >> Nilai[i];
+            }
+            MaximumSortDescending(Nilai, N);
+        }
+        else if (choice == 3)
+        {
+            cout << "Masukkan Banyak Bilangan: ";
+            cin >> N;
+
+            for (int i = 0; i < N; i++)
+            {
+                cout << "Elemen ke-" << i << " : ";
+                cin >> Nilai[i];
+            }
+            MinimumSortAscending(Nilai, N);
+        }
+        else if (choice == 4)
+        {
+            cout << "Masukkan Banyak Bilangan: ";
+            cin >> N;
+
+            for (int i = 0; i < N; i++)
+            {
+                cout << "Elemen ke-" << i << " : ";
+                cin >> Nilai[i];
+            }
+            MinimumSortDescending(Nilai, N);
+        }
+        else
+        {
+            cout << "Pilihan tidak valid. Masukkan nomor program (1-4) yang sesuai." << endl;
+        }
+
+        cout << "\nApakah Anda ingin mengulanginya lagi? (y/n): ";
+        cin >> ulangi;
+        system("cls");
 
     } while (ulangi == 'y' || ulangi == 'Y');
 
