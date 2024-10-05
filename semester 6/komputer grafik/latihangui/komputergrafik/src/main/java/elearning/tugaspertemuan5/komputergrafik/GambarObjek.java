@@ -82,7 +82,7 @@ public class GambarObjek extends JPanel {
         Font font = new Font("Arial", Font.BOLD, 18);
         g2d.setFont(font);
         String[] credits = {
-            "Credit: Indra Dwi A",
+            "Indra Dwi A",
             "211011450468",
             "06TPLP003"
         };
