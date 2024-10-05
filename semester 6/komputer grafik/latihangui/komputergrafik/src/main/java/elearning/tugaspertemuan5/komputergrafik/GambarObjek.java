@@ -51,7 +51,7 @@ public class GambarObjek extends JPanel {
         g2d.setColor(new Color(60, 179, 113)); // Warna hijau rumput
         g2d.fillRect(0, 400, 800, 100); // hutan (daunnya saja) bagian bawah
 
-        // Gambar pola "V" untuk sawah
+        // Gambar pola "V" untuk hutan dan rumput
         g2d.setColor(new Color(34, 139, 34));
         for (int i = 0; i < 800; i += 80) {
             int[] xV = {i, i + 40, i + 80};
@@ -77,7 +77,7 @@ public class GambarObjek extends JPanel {
         g2d.setColor(Color.YELLOW);
         g2d.fillOval(675, 205, 30, 30); // Pusat bunga (geser ke kanan)
 
-        // Menambahkan Kredit di Tengah Awan
+        // Copyright
         g2d.setColor(Color.BLACK);
         Font font = new Font("Arial", Font.BOLD, 18);
         g2d.setFont(font);
@@ -87,13 +87,12 @@ public class GambarObjek extends JPanel {
             "06TPLP003"
         };
         
-        // Menghitung posisi Y awal untuk menempatkan teks di tengah awan
-        int y = 50; // Posisi Y untuk menempatkan teks di tengah awan
+        int y = 50;
         for (String credit : credits) {
             FontMetrics fm = g.getFontMetrics();
             int x = (getWidth() - fm.stringWidth(credit)) / 2;
-            g2d.drawString(credit, x, y); // Menambahkan teks kredit
-            y += fm.getHeight(); // Menaikkan posisi Y untuk baris berikutnya
+            g2d.drawString(credit, x, y);
+            y += fm.getHeight();
         }
     }
 }
