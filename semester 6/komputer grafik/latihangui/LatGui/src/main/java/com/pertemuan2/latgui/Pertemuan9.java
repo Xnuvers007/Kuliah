@@ -16,11 +16,11 @@ import java.awt.image.*;
 // Import semua kelas dari paket javax.swing untuk membuat elemen GUI berbasis Java Swing
 import javax.swing.*;
 
-// Deklarasi kelas `Pertemuan10` yang merupakan turunan dari `JPanel`
+// Deklarasi kelas `Pertemuan9` yang merupakan turunan dari `JPanel`
 // JPanel adalah komponen GUI yang bisa menampung komponen-komponen lain dan menggambar grafik.
 public class Pertemuan9 extends JPanel {
 
-    // Konstruktor kelas Pertemuan10, yang akan dipanggil ketika objek dari kelas ini dibuat
+    // Konstruktor kelas Pertemuan9, yang akan dipanggil ketika objek dari kelas ini dibuat
     public Pertemuan9(){
         // Mengatur ukuran preferensi dari panel menjadi 400x400 piksel
         this.setPreferredSize(new Dimension(400, 400));
@@ -128,4 +128,4 @@ public class Pertemuan9 extends JPanel {
             x += 80;
         } //Penutup looping atau perulangan pada alphaComp
     } // Penutup method drawComposite
-} // Penutup kelas Pertemuan10
+} // Penutup kelas Pertemuan9
