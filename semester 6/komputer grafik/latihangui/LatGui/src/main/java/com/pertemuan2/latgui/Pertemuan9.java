@@ -1,4 +1,3 @@
-
 // Deklarasi package dari class ini, menunjukan lokasi file ini berada dalam proyek
 package com.pertemuan2.latgui;
 
@@ -19,10 +18,10 @@ import javax.swing.*;
 
 // Deklarasi kelas `Pertemuan10` yang merupakan turunan dari `JPanel`
 // JPanel adalah komponen GUI yang bisa menampung komponen-komponen lain dan menggambar grafik.
-public class Pertemuan10 extends JPanel {
+public class Pertemuan9 extends JPanel {
 
     // Konstruktor kelas Pertemuan10, yang akan dipanggil ketika objek dari kelas ini dibuat
-    public Pertemuan10(){
+    public Pertemuan9(){
         // Mengatur ukuran preferensi dari panel menjadi 400x400 piksel
         this.setPreferredSize(new Dimension(400, 400));
         
