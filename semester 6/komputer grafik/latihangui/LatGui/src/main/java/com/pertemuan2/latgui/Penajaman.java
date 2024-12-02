@@ -1,103 +1,97 @@
-package com.pertemuan2.latgui;
+package com.pertemuan2.latgui; // Deklarasi paket tempat kelas ini berada, yaitu `com.pertemuan2.latgui`
 
-import java.awt.*;  // Mengimpor kelas untuk bekerja dengan grafis 2D
-import java.awt.image.*;  // Mengimpor kelas untuk manipulasi gambar
-import javax.swing.*;  // Mengimpor kelas untuk membuat GUI menggunakan Swing
-import java.io.*;  // Mengimpor kelas untuk input/output file
-import javax.imageio.*;  // Mengimpor kelas untuk membaca dan menulis gambar
+// Mengimpor berbagai kelas untuk mendukung manipulasi grafis, pengolahan gambar, dan antarmuka pengguna
+import java.awt.*;             // apa itu java.awt = Abstract Window Toolkit (AWT) adalah API Java yang digunakan untuk membuat aplikasi GUI (Graphical User Interface).
+import java.awt.image.*;       // apa itu java.awt.image = package yang berisi kelas dan antarmuka yang digunakan untuk mengolah/manipulasi gambar.
+import javax.swing.*;          // apa itu javax.swing = package yang berisi kelas-kelas yang digunakan untuk membuat aplikasi GUI (Graphical User Interface) dengan Java Swing. Swing adalah toolkit GUI yang lebih modern dan fleksibel dibandingkan AWT.
+import java.io.*;              // apa itu java.io = package yang berisi kelas-kelas yang digunakan untuk operasi input dan output, seperti membaca file.
+import javax.imageio.*;        // apa itu javax.imageio = package yang berisi kelas-kelas yang digunakan untuk membaca dan menulis file gambar.
 
 /**
- * Panel untuk menampilkan gambar dan efek pengolahan citra seperti blur dan sharpening
+ * Kelas `Penajaman` adalah panel Swing untuk menampilkan gambar asli
+ * dan gambar yang telah dimodifikasi dengan efek sharpening (penajaman).
  */
-public class Penajaman extends JPanel {
+public class Penajaman extends JPanel { // Deklarasi kelas `Penajaman` sebagai turunan dari JPanel
+    // Variabel instance untuk menyimpan gambar asli dan gambar yang telah diproses
+    private BufferedImage image, imageSharpened; // `image` untuk gambar asli, `imageSharpened` untuk hasil sharpening
+    
+    // Ukuran setiap panel tempat gambar akan ditampilkan
+    private int panelWidth = 450;  // Lebar setiap panel
+    private int panelHeight = 400; // Tinggi panel
 
-    private BufferedImage image, imageBlurred, imageSharpened;  // Variabel untuk menyimpan gambar asli, gambar yang diblur, dan gambar yang ditajamkan
-    private int panelWidth = 450;  // Lebar setiap panel (untuk tiga panel)
-    private int panelHeight = 400;  // Tinggi panel (lebih pendek agar pas untuk caption di dalam gambar)
-
-    // Konstruktor untuk kelas Penajaman
+    /**
+     * Konstruktor kelas `Penajaman`. Konstruktor ini akan dipanggil saat objek dibuat.
+     * Bertugas mengatur ukuran panel dan memuat gambar.
+     */
     public Penajaman() {
-        // Menetapkan ukuran preferensi panel ini (lebar total untuk 3 panel gambar)
-        this.setPreferredSize(new Dimension(1350, 500));
+        // Menentukan ukuran preferensi panel (digunakan saat ditampilkan di JFrame)
+        this.setPreferredSize(new Dimension(1350, 500)); // Total lebar: 3 panel (450 x 3), tinggi: 500
 
         try {
-            // Memuat gambar dari file dengan menggunakan ImageIO.read()
+            // Memuat gambar dari file ke dalam objek BufferedImage menggunakan ImageIO
             image = ImageIO.read(new File("src/main/java/com/pertemuan2/latgui/contoh1.jpg"));
-            // Menerapkan efek blur yang sangat kuat pada gambar
-            imageBlurred = applyVeryStrongGaussianBlur(image); 
-            // Menerapkan efek penajaman pada gambar
+
+            if (image == null) { // Jika gambar tidak ditemukan, cetak pesan kesalahan
+                image = ImageIO.read(new File("./contoh1.jpg"));
+            }
+
+            // Mengaplikasikan efek sharpening pada gambar asli
             imageSharpened = applyStrongSharpening(image); 
-        } catch (IOException e) {
-            e.printStackTrace();  // Menangani pengecualian jika file gambar tidak ditemukan
+        } catch (IOException e) { // Penanganan jika file gambar tidak ditemukan
+            e.printStackTrace(); // Cetak stack trace untuk debugging
         }
     }
 
-    // Metode untuk menggambar komponen pada panel
+    /**
+     * Metode untuk menggambar elemen grafis pada panel. Dipanggil secara otomatis oleh Swing.
+     * @param g Objek Graphics yang digunakan untuk menggambar.
+     */
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);  // Memanggil metode paintComponent dari JPanel
-        Graphics2D g2 = (Graphics2D) g;  // Mengonversi objek Graphics menjadi Graphics2D untuk kontrol grafis lebih baik
+        super.paintComponent(g); // Memanggil implementasi `paintComponent` pada superclass
+        Graphics2D g2 = (Graphics2D) g; // Konversi objek Graphics menjadi Graphics2D untuk fitur lebih lanjut
 
-        // Menyesuaikan ukuran gambar untuk setiap panel
-        Image resizedImage = image.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH);
-        Image resizedBlurred = imageBlurred.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH);
-        Image resizedSharpened = imageSharpened.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH);
+        // Resize gambar asli dan gambar sharpened agar sesuai dengan ukuran panel
+        Image resizedImage = image.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH); // Resize gambar asli
+        Image resizedSharpened = imageSharpened.getScaledInstance(panelWidth, panelHeight, Image.SCALE_SMOOTH); // Resize gambar sharpened
 
-        // Gambar biasa (asli) di panel kiri
-        g2.setClip(10, 10, panelWidth, panelHeight);  // Mengatur area gambar untuk panel kiri
-        g2.drawImage(resizedImage, 10, 10, this);  // Menggambar gambar asli
-        g2.setColor(Color.RED);  // Mengatur warna teks menjadi merah
-        g2.setFont(new Font("ARIAL", Font.BOLD, 20));  // Mengatur font untuk caption
-        g2.drawString("Foto Biasa", 10 + (panelWidth / 4), panelHeight - 10);  // Menambahkan caption di bawah gambar asli
+        // Menampilkan gambar asli di panel kiri
+        g2.setClip(10, 10, panelWidth, panelHeight); // Atur area gambar (panel kiri)
+        g2.drawImage(resizedImage, 10, 10, this); // Gambarkan gambar asli pada area ini
 
-        // Gambar dengan efek Gaussian Blur di panel tengah
-        g2.setClip(panelWidth + 20, 10, panelWidth, panelHeight);  // Mengatur area gambar untuk panel tengah
-        g2.drawImage(resizedBlurred, panelWidth + 20, 10, this);  // Menggambar gambar yang sudah diblur
-        g2.drawString("Gaussian Blur (Very Strong)", panelWidth + 20 + (panelWidth / 4), panelHeight - 10);  // Caption untuk gambar blur
+        // Tambahkan caption untuk gambar asli
+        g2.setColor(Color.RED); // Warna teks caption: merah
+        g2.setFont(new Font("ARIAL", Font.BOLD, 22)); // Set font untuk caption
+        g2.drawString("Foto Biasa", 10 + (panelWidth / 4), panelHeight - 10); // Tulis teks di bawah gambar
 
-        // Gambar yang sudah disharpening di panel kanan
-        g2.setClip(2 * (panelWidth) + 30, 10, panelWidth, panelHeight);  // Mengatur area gambar untuk panel kanan
-        g2.drawImage(resizedSharpened, 2 * (panelWidth) + 30, 10, this);  // Menggambar gambar yang sudah disharpening
-        g2.drawString("Sharpening (Stronger)", 2 * (panelWidth) + 30 + (panelWidth / 4), panelHeight - 10);  // Caption untuk gambar sharpened
+        // Menampilkan gambar sharpened di panel tengah
+        g2.setClip(panelWidth + 20, 10, panelWidth, panelHeight); // Atur area gambar (panel tengah)
+        g2.drawImage(resizedSharpened, panelWidth + 20, 10, this); // Gambarkan gambar sharpened
+
+        // Tambahkan caption untuk gambar sharpened
+        g2.drawString("Sharpening", panelWidth + 20 + (panelWidth / 4), panelHeight - 10); // Teks deskripsi gambar
     }
 
     /**
-     * Mengaplikasikan efek Gaussian Blur yang sangat kuat pada gambar
-     * @param img Gambar yang akan diblur
-     * @return Gambar yang sudah diblur
-     */
-    private BufferedImage applyVeryStrongGaussianBlur(BufferedImage img) {
-        // Membuat kernel Gaussian 5x5 yang lebih kuat untuk efek blur
-        float[] matrix = {
-            1 / 280f,  4 / 280f,  6 / 280f,  4 / 280f,  1 / 280f,  // Baris pertama
-            4 / 280f, 16 / 280f, 24 / 280f, 16 / 280f,  4 / 280f,  // Baris kedua
-            10 / 280f, 40 / 280f, 60 / 280f, 40 / 280f,  10 / 280f,  // Baris ketiga (lebih kuat dari kernel standar)
-            4 / 280f, 16 / 280f, 24 / 280f, 16 / 280f,  4 / 280f,  // Baris keempat
-            1 / 280f,  4 / 280f,  6 / 280f,  4 / 280f,  1 / 280f   // Baris kelima
-        };
-        // Membuat objek Kernel dengan ukuran 5x5 dan matriks di atas
-        Kernel kernel = new Kernel(5, 5, matrix);  
-        // Menerapkan konvolusi (proses blur) menggunakan kernel yang dibuat
-        ConvolveOp convolveOp = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
-        return convolveOp.filter(img, null);  // Mengembalikan gambar yang sudah diblur
-    }
-
-    /**
-     * Mengaplikasikan efek penajaman pada gambar (Lebih Tajam)
-     * @param img Gambar yang akan diproses
-     * @return Gambar yang sudah ditajamkan
+     * Metode untuk mengaplikasikan efek sharpening yang kuat pada gambar.
+     * @param img Gambar asli yang akan diproses.
+     * @return Gambar hasil sharpening.
      */
     private BufferedImage applyStrongSharpening(BufferedImage img) {
-        // Membuat kernel penajaman 3x3 yang lebih kuat untuk efek sharpening
+        // **Kernel matriks 3x3 untuk efek sharpening yang lebih kuat**
         float[] matrix = {
-            -1, -1, -1,  // Baris pertama (negatif untuk kontras dengan pusat)
-            -1,  9, -1,  // Baris kedua (nilai 9 di tengah untuk memperkuat pusat)
-            -1, -1, -1   // Baris ketiga (negatif untuk kontras dengan pusat)
+            -1, -1, -1,  // Nilai di baris pertama: negatif untuk memperlemah area sekitar
+            -1,  9, -1,  // Nilai di baris kedua: pusat bernilai tinggi (9) untuk menonjolkan detail
+            -1, -1, -1   // Nilai di baris ketiga: negatif untuk menonjolkan kontras
         };
+
         // Membuat objek Kernel dengan ukuran 3x3 dan matriks di atas
         Kernel kernel = new Kernel(3, 3, matrix);  
-        // Menerapkan konvolusi (proses sharpening) menggunakan kernel yang dibuat
+
+        // Menerapkan konvolusi menggunakan kernel yang dibuat
         ConvolveOp convolveOp = new ConvolveOp(kernel);
-        return convolveOp.filter(img, null);  // Mengembalikan gambar yang sudah ditajamkan
+
+        // Filter gambar dengan konvolusi dan kembalikan hasilnya
+        return convolveOp.filter(img, null); 
     }
 }
